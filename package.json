@@ -1,0 +1,15 @@
+{
+  "name": "flow-stuck-repro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "flow check"
+  },
+  "author": "Glen Mailer <glen@stainlessed.co.uk>",
+  "license": "MIT",
+  "dependencies": {
+    "flow-bin": "^0.32.0",
+    "immutable": "^3.8.1"
+  }
+}

@@ -1,38 +1,21 @@
 /* @flow */
 import * as I from "immutable";
 
-import {defineRecord} from "./records";
-import type {Record} from "./records";
-
 export type GUID = string;
 
 type AShape = {
   some: string,
-  items: I.Map<GUID, ItemRecord>,
+  items: I.Map<GUID, ItemShape>,
 };
-export type ARecord = Record<AShape>;
-
-export const A = defineRecord("A", ({
-  some: "",
-  items: I.OrderedMap(),
-}: AShape));
+export type ARecord = AShape;
 
 type BShape = {
   different: string,
-  items: I.Map<GUID, ItemRecord>
+  items: I.Map<GUID, ItemShape>
 };
-export type BRecord = Record<BShape>;
-
-export const B = defineRecord("B", ({
-  different: "",
-  items: I.OrderedMap(),
-}: BShape));
+export type BRecord = BShape;
 
 type ItemShape = {
   defID: number,
 };
-export type ItemRecord = Record<ItemShape>;
-
-export const Item = defineRecord("Item", ({
-  defID: 0,
-}: ItemShape));
+export type ItemRecord = ItemShape;

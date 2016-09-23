@@ -1,16 +1,27 @@
 /* @flow */
+import * as I from "immutable";
 
-import type {GUID, ARecord, BRecord, ItemRecord} from "./types";
+export type GUID = string;
 
-export function updateItems<T: ARecord | BRecord>(
+type AShape = {
+  some: string,
+  items: I.Map<GUID, ItemShape>,
+};
+type BShape = {
+  different: string,
+  item: I.Map<GUID, ItemShape>
+};
+type ItemShape = {
+  defID: number,
+};
+
+export function updateItems<T: AShape | BShape>(
   target: T,
   ids: Array<GUID>,
-  updater: (value: ItemRecord) => ItemRecord
-): T {
-  return target.merge({
-    items: ids.reduce(
-      (items, k) => items.has(k) ? items.update(k, updater) : items,
-      target.items
-    )
-  });
+  updater: (value: ItemShape) => ItemShape
+) {
+  return ids.reduce(
+    (items, k) => items.update(k, updater),
+    target.items
+  );
 }
